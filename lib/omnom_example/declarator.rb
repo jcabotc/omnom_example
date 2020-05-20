@@ -3,9 +3,9 @@ require "json"
 
 class OmnomExample
   class Declarator
-    def initialize(opts)
-      @full_topic = "projects/#{opts[:project_id]}/topics/#{opts[:topic]}"
-      @full_subscription = "projects/#{opts[:project_id]}/subscriptions/#{opts[:subscription]}"
+    def initialize(project_id, topic, subscription, opts)
+      @full_topic = "projects/#{project_id}/topics/#{topic}"
+      @full_subscription = "projects/#{project_id}/subscriptions/#{subscription}"
 
       @http = Net::HTTP.new(opts[:host], opts[:port])
       @headers = {"authorization" => "Bearer #{opts[:token]}", "content-type" => "application/json"}

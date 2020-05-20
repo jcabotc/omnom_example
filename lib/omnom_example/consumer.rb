@@ -4,8 +4,8 @@ require 'omnom_example/consumer/handler'
 
 class OmnomExample
   class Consumer
-    def initialize(options)
-      @config = build_config(options)
+    def initialize(project_id, subscription, opts)
+      @config = build_config(project_id, subscription, opts)
     end
 
     def start
@@ -18,9 +18,11 @@ class OmnomExample
 
     private
 
-    def build_config(options)
+    def build_config(project_id, subscription, opts)
+      adapter_config = opts.merge(project_id: project_id, subscription: subscription)
+
       Omnom::Config.new(
-        adapter: Omnom::Adapter::GooglePubsub.new(options),
+        adapter: Omnom::Adapter::GooglePubsub.new(adapter_config),
         handler: Handler.new,
         buffer_size: 100,
         poll_interval_ms: 250,
