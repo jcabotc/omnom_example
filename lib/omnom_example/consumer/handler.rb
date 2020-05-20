@@ -2,10 +2,9 @@ class OmnomExample
   class Consumer
     class Handler
       def handle(message)
-        puts "[#{message}] Processing..."
-        sleep(rand * 4)
-        puts "[#{message}] Done!"
+        sleep(rand * 4) # Simulate a long running task
 
+        puts "[Handler] Consumed: #{message}"
         true
       end
     end

@@ -5,7 +5,15 @@ require 'omnom_example/consumer/handler'
 class OmnomExample
   class Consumer
     def initialize(project_id, subscription, opts)
-      @config = build_config(project_id, subscription, opts)
+      adapter_config = opts.merge(project_id: project_id, subscription: subscription)
+
+      @config = Omnom::Config.new(
+        adapter: Omnom::Adapter::GooglePubsub.new(adapter_config),
+        handler: Handler.new,
+        buffer_size: 20,
+        poll_interval_ms: 250,
+        concurrency: 8
+      )
     end
 
     def start
@@ -17,18 +25,6 @@ class OmnomExample
     end
 
     private
-
-    def build_config(project_id, subscription, opts)
-      adapter_config = opts.merge(project_id: project_id, subscription: subscription)
-
-      Omnom::Config.new(
-        adapter: Omnom::Adapter::GooglePubsub.new(adapter_config),
-        handler: Handler.new,
-        buffer_size: 100,
-        poll_interval_ms: 250,
-        concurrency: 8
-      )
-    end
 
     def setup_system_signals_and_consume
       Signal.trap("TERM") { stop; exit }
