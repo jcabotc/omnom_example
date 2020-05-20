@@ -4,7 +4,7 @@ class OmnomExample
       def handle(message)
         sleep(rand * 4) # Simulate a long running task
 
-        puts "[Handler] Consumed: #{message}"
+        puts "Handler consumed: #{message}"
         true
       end
     end

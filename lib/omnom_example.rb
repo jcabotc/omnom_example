@@ -17,7 +17,7 @@ class OmnomExample
     declarator.run
   end
 
-  desc "publish PROJECT_ID TOPIC AMOUNT", "Publish many messages to a topic"
+  desc "publish PROJECT_ID TOPIC AMOUNT", "Publish the specified amount of messages to a topic"
   def publish(project_id, topic, str_amount)
     amount = str_amount.to_i
 

@@ -1,40 +1,21 @@
 # OmnomExample
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/omnom_example`. To experiment with that code, run `bin/console` for an interactive prompt.
+This app is an example on how to use [the Omnom gem](https://github.com/jcabotc/omnom).
 
-TODO: Delete this and the text above, and describe your gem
+It comes with a CLI that provides some commands to interact with Google Pubsub. The default configuration expects the [Google Pubsub Emulator](#) to be started locally with the default configuration.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Clone the repo:
 
 ```ruby
-gem 'omnom_example'
+git clone https://github.com/jcabotc/omnom_example
 ```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install omnom_example
 
 ## Usage
 
-TODO: Write usage instructions here
+At the root of the project run:
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/omnom_example.
-
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+```
+bundle exec exe/omnom_example help
+```
